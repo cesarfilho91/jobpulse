@@ -1,7 +1,9 @@
+
 services:
   - type: web
     name: jobpulse-api
     runtime: python
+    plan: free
     rootDir: server
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
@@ -13,6 +15,7 @@ services:
         value: "24"
       - key: POLL_INTERVAL_SECONDS
         value: "180"
+
   - type: web
     name: jobpulse-web
     runtime: static
